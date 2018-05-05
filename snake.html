@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+<style>
+* {
+        margin: 0;
+        padding: 0;
+}
+
+html, body {
+        width: 100%;
+        height: 100%;
+}
+
+#scene {
+        display: block;
+}
+
+.info {
+        position: fixed;
+        color: lightgray;
+        font-family: monospace;
+        font-size: 20px;
+}
+
+#topRight {
+        top: 0px;
+        right: 0px;
+}
+
+#bottomLeft {
+        bottom: 0px;
+        left: 0px;
+}
+
+#bottomRight {
+        bottom: 0px;
+        right: 0px;
+}
+</style>
+</head>
+<body>
+        <div class="info" id="topRight">length: <span id="length"></span>
+                                        speed: <span id="speed"></span>
+                                        score: <span id="score"></span>
+        </div>
+        <div class="info" id="bottomLeft"><span id="message"></span></div>
+        <div class="info" id="bottomRight"><span id="elapsedTime"></span></div>
+
+        <canvas id="scene"></canvas>
+
+        <script type="text/javascript" src="snake.js"></script>
+</body>
+</html>
