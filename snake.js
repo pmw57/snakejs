@@ -87,6 +87,9 @@
     });
 
 
+    var game = {};
+
+
     // Special block that can be eaten by the snake. Takes an options object which
     // is used to initialize its properties. In particular:
     //
@@ -170,7 +173,6 @@
     // method, it can then be (re)started with start method. Restarts should be
     // preceded by a gameOver call.
     //
-    var game = {};
     game = Object.assign({
         mainLoopInterval: null,
         updateElapsedTimeInterval: null,
@@ -525,7 +527,7 @@
         getElapsedTimeHMS: function () {
             function pad(num) {
                 var str = "";
-                if (h < 10) {
+                if (num < 10) {
                     str += "0";
                 }
                 return str + String(num);
