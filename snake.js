@@ -114,10 +114,10 @@
             removeTimeout: null,
             spawnTimeout: null,
             drawFood: function () {
-                food.game.scene.drawBlock(food.position, food.game.blockSize, food.color);
+                game.scene.drawBlock(food.position, game.blockSize, food.color);
             },
             clearFood: function () {
-                food.game.scene.clearBlock(food.position, food.game.blockSize);
+                game.scene.clearBlock(food.position, game.blockSize);
             },
 
             // Clears the eventual removeTimeout and current food position. Sets
@@ -130,11 +130,10 @@
                 food.position = OUT_OF_GAME_FIELD;
 
                 var time = Math.floor(Math.random() * food.spawnIn * 1000);
-                var that = food;
                 food.spawnTimeout = setTimeout(function () {
-                    that.position = that.game.getRandomFreePosition();
-                    that.drawFood();
-                    that.scheduleRemove();
+                    food.position = game.getRandomFreePosition();
+                    food.drawFood();
+                    food.scheduleRemove();
                 }, time);
             },
 
@@ -144,11 +143,10 @@
             //
             scheduleRemove: function () {
                 var time = Math.floor(Math.random() * food.removeIn * 1000);
-                var that = food;
                 food.removeTimeout = setTimeout(function () {
-                    that.clearFood();
-                    that.position = OUT_OF_GAME_FIELD;
-                    that.scheduleSpawn();
+                    food.clearFood();
+                    food.position = OUT_OF_GAME_FIELD;
+                    food.scheduleSpawn();
                 }, time);
             },
 
@@ -201,55 +199,50 @@
 
             game.foods.push(
                 new Food({
-                    game: game,
                     color: "yellow",
                     spawnIn: 10,
                     removeIn: 30,
                     action: function () {
-                        game.game.increaseScore(1);
-                        game.game.resizeBody(game.game.body.length + 3);
-                        game.game.adjustSpeed(game.game.speed + 1);
+                        game.increaseScore(1);
+                        game.resizeBody(game.body.length + 3);
+                        game.adjustSpeed(game.speed + 1);
                     }
                 }),
                 new Food({
-                    game: game,
                     color: "red",
                     spawnIn: 30,
                     removeIn: 15,
                     action: function () {
-                        game.game.increaseScore(game.game.body.length * 2);
-                        game.game.resizeBody(game.game.body.length * 2);
-                        game.game.adjustSpeed(game.game.speed + 1);
+                        game.increaseScore(game.body.length * 2);
+                        game.resizeBody(game.body.length * 2);
+                        game.adjustSpeed(game.speed + 1);
                     }
                 }),
                 new Food({
-                    game: game,
                     color: "blue",
                     spawnIn: 30,
                     removeIn: 15,
                     action: function () {
-                        game.game.increaseScore(game.game.body.length * 2);
-                        game.game.resizeBody(game.game.body.length / 2);
+                        game.increaseScore(game.body.length * 2);
+                        game.resizeBody(game.body.length / 2);
                     }
                 }),
                 new Food({
-                    game: game,
                     color: "purple",
                     spawnIn: 180,
                     removeIn: 10,
                     action: function () {
-                        game.game.increaseScore(game.game.score);
-                        game.game.resizeBody(1);
-                        game.game.adjustSpeed(1);
+                        game.increaseScore(game.score);
+                        game.resizeBody(1);
+                        game.adjustSpeed(1);
                     }
                 }),
                 new Food({
-                    game: game,
                     color: "black",
                     spawnIn: 120,
                     removeIn: 30,
                     action: function () {
-                        game.game.gameOver();
+                        gameOver();
                     }
                 })
             );
