@@ -523,22 +523,17 @@
         }()),
 
         getElapsedTimeHMS: function () {
+            function pad(num) {
+                var str = "";
+                if (h < 10) {
+                    str += "0";
+                }
+                return str + String(num);
+            }
             var h = Math.floor(game.elapsedTime / 60 / 60);
             var m = Math.floor(game.elapsedTime / 60 % 60);
             var s = Math.floor(game.elapsedTime % 60);
-            return (
-                (h > 9)
-                    ? ""
-                    : "0"
-            ) + h + ":" + (
-                (m > 9)
-                    ? ""
-                    : "0"
-            ) + m + ":" + (
-                (s > 9)
-                    ? ""
-                    : "0"
-            ) + s;
+            return pad(h) + ":" + pad(m) + ":" + pad(s);
         },
 
         updateInfos: (function () {
