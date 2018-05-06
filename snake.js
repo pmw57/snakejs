@@ -17,7 +17,7 @@
 
     // Represents a x y position on the game field.
     //
-    function makePosition(x, y) {
+    function position(x, y) {
         var pos = {};
 
         function equals(other) {
@@ -31,7 +31,7 @@
         });
     }
 
-    var OUT_OF_GAME_FIELD = makePosition(-1, -1);
+    var OUT_OF_GAME_FIELD = position(-1, -1);
 
 
     // Represents the canvas on which to draw elements. Should be initialized with
@@ -242,7 +242,7 @@
                     spawnIn: 120,
                     removeIn: 30,
                     action: function () {
-                        gameOver();
+                        game.gameOver();
                     }
                 })
             );
@@ -384,7 +384,7 @@
             if (game.body.length < newLength) {
                 var tail = game.body[game.body.length - 1];
                 while (game.body.length < newLength) {
-                    game.body.push(makePosition(tail.x, tail.y));
+                    game.body.push(position(tail.x, tail.y));
                 }
             } else {
                 while (game.body.length > newLength) {
@@ -436,7 +436,7 @@
         // body block or food.
         //
         getRandomFreePosition: function () {
-            var pos = makePosition(0, 0);
+            var pos = position(0, 0);
             do {
                 pos.x = Math.floor(Math.random() * game.width);
                 pos.y = Math.floor(Math.random() * game.height);
