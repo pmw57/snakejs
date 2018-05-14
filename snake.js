@@ -108,7 +108,6 @@
         var food = {};
 
         return Object.assign(food, {
-            game: options.game,
             color: options.color,
             action: options.action,
             spawnIn: options.spawnIn,
