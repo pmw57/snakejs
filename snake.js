@@ -1,6 +1,8 @@
 /*jslint browser */
 (function () {
     "use strict";
+    var game = {};
+
     var MIN_MAINLOOP_INTERVAL_TIME = 20;
     var MAX_MAINLOOP_INTERVAL_TIME = 120;
     var MIN_SPEED = 1;
@@ -87,7 +89,6 @@
     });
 
 
-    var game = {};
 
 
     // Special block that can be eaten by the snake. Takes an options object which
